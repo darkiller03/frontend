@@ -49,7 +49,13 @@ export function AppLayout({ children }: AppLayoutProps) {
 
   return (
     <SidebarProvider defaultOpen={false}>
-      <ChatSidebar chatHistory={chatHistory} onNewChat={() => {}} onSelectChat={() => {}} onDeleteChat={() => {}} />
+      <ChatSidebar
+        chatHistory={chatHistory}
+        activeChatId={chatHistory.find(chat => chat.active)?.id || null}
+        onNewChat={() => {}}
+        onSelectChat={() => {}}
+        onDeleteChat={() => {}}
+      />
       <SidebarInset className="flex flex-col min-h-screen">
         <div className="flex-1">{children}</div>
       </SidebarInset>
